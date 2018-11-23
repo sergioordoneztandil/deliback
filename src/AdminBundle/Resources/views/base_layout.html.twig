@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html {% block html_attributes %}class="no-js"{% endblock %}>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="UTF-8">
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
+        {% stylesheets
+                '@AdminBundle/Resources/public/css/bootstrap.min.css'
+                '@AdminBundle/Resources/public/css/custom.css'
+        %}
+        <link rel="stylesheet" href="{{ asset(asset_url) }}">
+        {% endstylesheets %}
+
+        {% block javascripts %}
+
+            {% javascripts
+                '@AdminBundle/Resources/public/js/jquery-3.3.1.min.js'
+                '@AdminBundle/Resources/public/js/popper.min.js'
+                '@AdminBundle/Resources/public/js/bootstrap.min.js'
+                '@AdminBundle/Resources/public/js/custom.js'
+            %}
+                <script src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+
+        <title>
+        {% block sonata_head_title %}
+            
+        {% endblock %}
+        </title>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v4.7.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    </head>
+    <body >
+        {% block body %}
+            
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,7 @@
+rm -rf app/cache/*
+chmod -R 777 app/{cache,logs}
+php app/console assetic:dump
+php app/console assets:install
+rm -rf app/cache/*
+chmod -R 777 app/{cache,logs}
+echo 'Listo'

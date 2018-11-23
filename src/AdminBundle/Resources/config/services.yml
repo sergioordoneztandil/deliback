@@ -1,0 +1,59 @@
+services:
+#    admin.example:
+#        class: AdminBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    admin.admin.menu:
+        class: AdminBundle\Admin\MenuAdmin
+        arguments: [~, CoreBundle\Entity\Menu, Sonata\AdminBundle\Controller\CRUDController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Menu }
+        public: true
+
+    admin.admin.plato:
+        class: AdminBundle\Admin\PlatoAdmin
+        arguments: [~, CoreBundle\Entity\Plato, Sonata\AdminBundle\Controller\CRUDController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Plato }
+        public: true
+
+    admin.admin.cliente:
+        class: AdminBundle\Admin\ClienteAdmin
+        arguments: [~, CoreBundle\Entity\Cliente, Sonata\AdminBundle\Controller\CRUDController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Cliente }
+        public: true
+
+    admin.admin.empleado:
+        class: AdminBundle\Admin\EmpleadoAdmin
+        arguments: [~, CoreBundle\Entity\Empleado, Sonata\AdminBundle\Controller\CRUDController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Empleado }
+        public: true
+
+    admin.admin.pedido:
+        class: AdminBundle\Admin\PedidoAdmin
+        arguments: [~, CoreBundle\Entity\Pedido, Sonata\AdminBundle\Controller\CRUDController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Pedido }
+        public: true
+
+    admin.admin.pedido_item:
+        class: AdminBundle\Admin\PedidoItemAdmin
+        arguments: [~, CoreBundle\Entity\PedidoItem, Sonata\AdminBundle\Controller\CRUDController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: PedidoItem }
+        public: true
+
+    admin.admin.seccion:
+        class: AdminBundle\Admin\SeccionAdmin
+        arguments: [~, CoreBundle\Entity\Seccion, Sonata\AdminBundle\Controller\CRUDController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Seccion }
+        public: true
+
+    admin.admin.periodo:
+        class: AdminBundle\Admin\PeriodoAdmin
+        arguments: [~, CoreBundle\Entity\Periodo, Sonata\AdminBundle\Controller\CRUDController]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Periodo }
+        public: true

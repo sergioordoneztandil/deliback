@@ -1,0 +1,67 @@
+{% extends base_template %}
+
+{% block sonata_nav %}
+{% endblock sonata_nav %}
+
+{% block logo %}
+{% endblock logo %}
+
+{% block sonata_left_side %}
+{% endblock sonata_left_side %}
+
+{% block body_attributes %}class="sonata-bc login-page"{% endblock %}
+
+{% block sonata_wrapper %}
+    <div class="container">
+        <div class="login-logo">
+            <a href="/admin/dashboard">
+                <div>
+                    {% image '@AdminBundle/Resources/public/img/logo_title.png' %}
+                        <img style="padding: 17px 0 0 0;" src="{{ asset_url }}" alt="Delibox">
+                    {% endimage %}
+                </div>
+            </a>
+        </div>
+    {% block sonata_user_login_form %}
+    {% if error %}
+        <div class="alert alert-danger alert-error">{{ error|trans({}, 'FOSUserBundle') }}</div>
+    {% else %}
+        {% for flashMessage in app.session.flashbag.get('error') %}
+            <div class="alert alert-danger alert-error">
+                {{ flashMessage |trans({}, 'FOSUserBundle') }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <form class="col-md-4 col-md-offset-4" action="{{ path("sonata_user_admin_security_check") }}" method="post" role="form">
+            <div id="error" class="alert alert-danger alert-dismissible fade in hide" role="alert">
+                <span id="errorMsg">
+                </span>
+            </div>
+            <div class="form-group">
+              <label for="Documento">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+                <input type="text" class="form-control input-lg" id="username"  name="_username" value="{{ last_username }}" required="required" />
+            </div>
+            <div class="form-group">
+              <label for="Correo">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+              <input type="password" class="form-control input-lg" id="password" name="_password" required="required" />
+            </div>
+            <div class="form-group">
+              <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+              {{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-xl btn-primary" href="#">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
+            </div>
+          </form>
+        </div>
+    {% endblock %}
+
+{% endblock sonata_wrapper %}
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            
+        });
+    </script>
+{% endblock %}
